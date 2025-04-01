@@ -1,28 +1,12 @@
 import { useContext, useEffect, useState } from "react"
 import { UserContext } from "../contexts/User";
 import { getUsers } from "../api";
+import useApiRequest from "../custom-hooks/useApiRequest";
 
 function UserProfile() {
 
-    const [users, setUsers] = useState([]);
+    const {data: users, isLoading, isError} = useApiRequest(getUsers)
     const {loggedInUser, setLoggedInUser} = useContext(UserContext);
-    const [isLoading, setIsLoading] = useState(true);
-    const [isError, setIsError] = useState(false);
-    
-    useEffect(() => {
-        setIsLoading(true);
-        setIsError(false);
-
-        getUsers().then((usersFromApi) => {
-            setUsers(usersFromApi)
-        })
-        .catch((err) => {
-            setIsError(true);
-        })
-        .finally(() => {
-            setIsLoading(false);
-        })
-    }, [])
 
     if(isLoading) {
         return (<p>Loading...</p>)
