@@ -13,13 +13,13 @@ const useApiRequest = (apiFunction, ...args) => {
                 setData(data)
             })
             .catch((err) => {
+                console.log(err)
                 setIsError(true);
             })
             .finally(() => {
                 setIsLoading(false);
             })
         }, [...args])
-    
     return {data, isLoading, isError};
 
 }
