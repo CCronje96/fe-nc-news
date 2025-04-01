@@ -13,6 +13,8 @@ function App() {
       <Header />
       <Routes >
         <Route path="/user-profile" element={<UserProfile />}/>
+        <Route path="/" element={<ArticleList />} />
+        <Route path="/articles" element={<ArticleList />} />
       </Routes> 
     </UserProvider>
     </>
