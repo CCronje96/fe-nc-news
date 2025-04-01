@@ -40,7 +40,8 @@ function UserProfile() {
     return (
         <div id="user-profile-container">
              <div id="user-profile-image-container">
-                <img id="profile-icon" src={loggedInUser.avatar_url || "pngwing.com.png"} alt="smiling yellow face illustration" />   
+                <img id="profile-icon" src={loggedInUser.avatar_url || "pngwing.com.png"} alt="smiling yellow face illustration" /> 
+                </div>  
             <div className="user-selector">
                 <p>Switch User:</p>
                 <select onClick={handleClick}>
@@ -51,7 +52,6 @@ function UserProfile() {
                 })
                 }
                 </select>
-                </div>
             </div>
         </div>
     )
