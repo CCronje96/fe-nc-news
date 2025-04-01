@@ -1,26 +1,10 @@
-import { useEffect, useState } from "react";
 import { getArticles } from "../api";
 import ArticleCard from "./ArticleCard";
+import useApiRequest from "../custom-hooks/useApiRequest";
 
 function ArticleList() {
-    const [articles, setArticles] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [isError, setIsError] = useState(false);
 
-    useEffect(() => {
-        setIsLoading(true);
-        setIsError(false);
-
-        getArticles().then((articlesFromApi) => {
-            setArticles(articlesFromApi)
-        })
-        .catch((err) => {
-            setIsError(true);
-        })
-        .finally(() => {
-            setIsLoading(false);
-        })
-    }, [])
+    const {data: articles, isLoading, isError} = useApiRequest(getArticles)
 
     if(isLoading) {
         return (<p>Loading...</p>)
