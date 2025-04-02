@@ -22,6 +22,14 @@ export const getArticle = (article_id) => {
   });
 };
 
+export const patchArticle = (article_id, voteChange) => {
+  return api
+    .patch(`/articles/${article_id}`, { inc_votes: voteChange })
+    .then(({ data: { article } }) => {
+      return article;
+    });
+};
+
 export const getComments = (article_id) => {
   return api
     .get(`/articles/${article_id}/comments`)

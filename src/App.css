@@ -129,6 +129,40 @@ li {
   margin: 10px;
 }
 
+.votes-wrapper {
+  display: flex;
+  justify-content: end;
+  padding: 12px;
+}
+
+.vote {
+  display: flex;
+  align-items: center;
+  cursor: default;
+}
+
+.vote-selected > .vote-button,
+.vote-selected > .vote-count {
+  color: #078080;
+}
+
+.vote:not(.vote-selected) > .vote-button:hover {
+  color:#232323;
+}
+
+
+.vote-button {
+  margin-right: 6px;
+  cursor: pointer;
+  color:#636363;
+}
+
+.comment-error {
+  display: flex;
+  justify-content: end;
+  padding: 12px;
+}
+
 .comments-box {
   justify-self: center;
   width: 98%;

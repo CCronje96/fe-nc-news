@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { getArticle, getComments } from "../api";
 import useApiRequest from "../custom-hooks/useApiRequest";
 import Comment from "./Comment";
+import Votes from "./Votes";
 
 function Article() {
 
@@ -30,6 +31,7 @@ function Article() {
                     <p className="text-info">Published: {new Date(article.created_at).toLocaleDateString("en-GB")}</p>
                 </div>
                 <p className="text-body">{article.body}</p>
+                <Votes article={article}/>
                 <div className="text-footer">
                 <div className="comments-box">
                         {comments.length === 0 ? (
