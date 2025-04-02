@@ -5,25 +5,27 @@ const api = axios.create({
 });
 
 export const getArticles = () => {
-  return api.get("/articles").then(({ data }) => {
-    return data.articles;
+  return api.get("/articles").then(({ data: { articles } }) => {
+    return articles;
   });
 };
 
 export const getUsers = () => {
-  return api.get("/users").then(({ data }) => {
-    return data.users;
+  return api.get("/users").then(({ data: { users } }) => {
+    return users;
   });
 };
 
 export const getArticle = (article_id) => {
-  return api.get(`/articles/${article_id}`).then(({ data }) => {
-    return data.article;
+  return api.get(`/articles/${article_id}`).then(({ data: { article } }) => {
+    return article;
   });
 };
 
 export const getComments = (article_id) => {
-  return api.get(`/articles/${article_id}/comments`).then(({ data }) => {
-    return data.comments;
-  });
+  return api
+    .get(`/articles/${article_id}/comments`)
+    .then(({ data: { comments } }) => {
+      return comments;
+    });
 };

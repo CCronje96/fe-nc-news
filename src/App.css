@@ -19,8 +19,31 @@ body {
 	width:100%;
   margin: 0;
   background-color: #fffffe;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   box-sizing: border-box;
+}
+
+
+h1 {
+  font-family: "DM Serif Display", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: xxx-large;
+  margin: 5px;
+}
+
+h2 {
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+  font-style: normal
+}
+
+h3 {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: normal
 }
 
 header {
@@ -75,10 +98,6 @@ header {
 #user-icon img {
   height: 100%;
   object-fit: cover;
-}
-
-h1 {
-  padding: 10px;
 }
 
 ul {
@@ -253,9 +272,12 @@ li {
 
 @media only screen and (max-width: 600px) {
   h1 {
-    padding: 10px;
-    font-size:x-large;
+    font-size:xx-large;
     text-align: center;
+  }
+
+  h2 {
+    font-size: larger;
   }
 
   .article-box-container {
