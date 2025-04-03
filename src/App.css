@@ -5,8 +5,8 @@ a:-webkit-any-link{
 a:hover{
   text-decoration: underline;
 }
-.article-header-author:hover{
-  text-decoration: underline;
+a.wrapping-link:hover{
+  text-decoration: none;
 }
 
 #root {
@@ -16,7 +16,7 @@ a:hover{
 
 body {
   height:100%;
-    width:100%;
+  width:100%; 
   margin: 0;
   background-color: #fffffe;
   font-family: "Lato", sans-serif;
@@ -106,6 +106,58 @@ ul {
 
 li {
   padding: 0 5px;
+}
+
+.topic-box-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  box-sizing: border-box;
+  width: 100%
+}
+
+.topic-box {
+  display: flex;
+  background-color: #f8f5f2;
+  flex-basis: 20vw; /* Use flex-basis for more responsive behavior */
+  height: 50vh;
+  max-width: 380px; /* Optional max-width to ensure it doesn’t grow too large */
+  max-height: 300px; /* Optional max-height to limit the box size */
+  border-radius: 5px;
+  margin: 10px;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.topic-text-container {
+  max-width: 90%;
+  padding-inline: 10px;
+  height: 80px;
+  margin-block: 10px;
+}
+
+.topic-card-description,
+.topic-card-title {
+  padding-block: 5px;
+  margin: 0px;
+}
+
+.topic-img-container {
+  display: flex;
+  overflow: hidden;
+  place-items: center;
+  justify-content: center;
+  object-fit: contain;
+}
+
+.topic-box img {
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain;
 }
 
 .article-box-container {
