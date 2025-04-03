@@ -42,7 +42,6 @@ function AddComment({article_id, setNewComments}) {
                 setCommentInput("Type here...");
             })
             .catch((err) => {
-                console.error(err);
                 setError(true);
             })
             .finally(() => {
