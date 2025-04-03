@@ -16,7 +16,7 @@ function UserProfile() {
         return(<p>Oops! Something went wrong.</p>)
     }
 
-    function handleClick(event) {
+    function handleChange(event) {
         const selectedUser = JSON.parse(event.target.value)
         setLoggedInUser(selectedUser)
     }
@@ -26,9 +26,9 @@ function UserProfile() {
              <div id="user-profile-image-container">
                 <img id="profile-icon" src={loggedInUser.avatar_url || "pngwing.com.png"} alt="smiling yellow face illustration" /> 
                 </div>  
-            <div className="user-selector-container">
+            <div className="selector-container">
                 <p>Switch User:</p>
-                <select onClick={handleClick} className="user-selector" defaultValue="">
+                <select onChange={handleChange} className="selector" defaultValue="">
                 <option value="" disabled>Select user...</option>
                     { users.map((user) => {
                         return (

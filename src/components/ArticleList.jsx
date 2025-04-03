@@ -51,24 +51,29 @@ function ArticleList() {
 
     return (
         <div className="article-box-container">
+            <div className="all-selectors-container">
+            <div className="selector-container">
+            <p>Sort By:</p>
             <select className="selector" 
                 value={sort_by || ""}
                 onChange={handleSort}>
-                <option value="" disabled>Sort by...</option>
                 <option value="created_at">Date</option>
                 <option value="comment_count">Comment Count</option>
                 <option value="votes">Votes</option>
             </select>
+            </div>
+            <div className="selector-container">
+            <p>Order By:</p>
             <select 
                 className="selector" 
                 value={order || ""}
                 onChange={handleOrder}
             >
-                <option value="" disabled>Order by...</option>
                 <option value="desc">Descending</option>
                 <option value="asc">Ascending</option>
             </select>
-
+            </div>
+            </div>
             {articles.map((article) => (
                 <div key={article.article_id}><ArticleCard article={article} /></div>
             ))}

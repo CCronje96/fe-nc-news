@@ -452,6 +452,11 @@ li {
   object-fit: cover;
 }
 
+.all-selectors-container {
+  display: flex;
+  flex-direction: row;
+}
+
 .selector-container {
   display: grid;
   justify-content: center;
