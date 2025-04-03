@@ -67,7 +67,7 @@ function Article() {
                         ) : (
                             comments.map((comment) => (
                                 <div className="comment-wrapper" key={comment.comment_id}>
-                                    <Comment comment={comment} />
+                                    <Comment comment={comment} setNewComments={setNewComments}/>
                                 </div>
                             ))
                         )}

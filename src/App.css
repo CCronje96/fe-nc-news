@@ -16,7 +16,7 @@ a:hover{
 
 body {
   height:100%;
-	width:100%;
+    width:100%;
   margin: 0;
   background-color: #fffffe;
   font-family: "Lato", sans-serif;
@@ -170,11 +170,19 @@ li {
 }
 
 .comment-wrapper {
-  display: flex;
+  display: grid;
   flex-direction:column;
   background-color: #fffffe;
   border: 3px solid #f8f5f2;
   border-radius: 20px;
+}
+
+.comment-footer {
+  display: flex;
+  flex-direction: column;
+  justify-self: end;
+  padding: 0px 10px 10px 10px;
+  align-items: end;
 }
 
 .no-comments-card {
@@ -250,8 +258,27 @@ li {
   border-radius: 10px;
 }
 
+.delete-comment{
+  align-self: center;
+  width: 80px;
+  height: 25px;
+  color:#f8f5f2;
+  background-color: #c7240e;
+  cursor: pointer;
+  text-align: center;
+  font-size: medium;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+}
+
 .comment-submit:hover {
   background-color: #075252;
+}
+
+.delete-comment:hover {
+  background-color: #971f0f;
 }
 
 .article-card-title {
@@ -295,7 +322,7 @@ li {
   color: #076d6d;
   font-size:medium;
   margin: 0;
-  margin-top: 0.1em;
+  margin-top: 0.8em;
   margin-bottom: 0.1em;
   margin-left: 0.5em;
   margin-right: 0.5em;
@@ -317,7 +344,6 @@ li {
   font-size:medium;
   margin: 0.5em;
   margin-top: 0.8em;
-  margin-bottom: 0.8em;
 }
 
 #user-profile-container {
