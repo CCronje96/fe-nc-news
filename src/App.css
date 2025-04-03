@@ -57,18 +57,18 @@ header {
 
 #nav-bar {
   width: 100%;
-  background-color: #f8f5f2;
   display: flex;
   flex-direction: row;
   justify-content: center;
   justify-items: center;
-  background-color: #f45d48;
+  background-color: #c7240e;
   margin-bottom: 10px;
 }
 
 .nav-button {
   padding: 15px;
   color: #f8f5f2;
+  font-weight: 500;
 }
 
 .wrapper {
@@ -143,7 +143,7 @@ li {
 
 .vote-selected > .vote-button,
 .vote-selected > .vote-count {
-  color: #078080;
+  color: #076d6d;
 }
 
 .vote:not(.vote-selected) > .vote-button:hover {
@@ -198,6 +198,61 @@ li {
   padding: 5px;
 }
 
+.add-comment-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-comment-form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  align-self: center;
+  padding: 10px;
+  padding-bottom: 20px;
+}
+
+.comment-input {
+  width: 100%;
+  margin-block: 10px;
+  padding-block: 10px;
+  padding-inline: 5px;
+  font-family: inherit;
+  font-size: inherit;
+  color: #303030;
+}
+
+.comment-input.error  {
+  width: 100%;
+  margin-block: 10px;
+  padding-block: 10px;
+  padding-inline: 5px;
+  font-family: inherit;
+  font-size: inherit;
+  color: red;
+  border-color: red;
+}
+
+
+.comment-submit {
+  display: inline-block;
+  align-self: center;
+  width: 100px;
+  height: 40px;
+  color:#f8f5f2;
+  background-color: #076d6d;
+  cursor: pointer;
+  text-align: center;
+  font-size: medium;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+}
+
+.comment-submit:hover {
+  background-color: #075252;
+}
 
 .article-card-title {
   color: #232323;
@@ -214,7 +269,7 @@ li {
 }
 
 .article-card-author {
-  color: #078080;
+  color: #076d6d;
   font-size:medium;
   padding: 5px;
   margin: 0;
@@ -237,7 +292,7 @@ li {
 }
 
 .text-author {
-  color: #078080;
+  color: #076d6d;
   font-size:medium;
   margin: 0;
   margin-top: 0.1em;
@@ -273,6 +328,7 @@ li {
   justify-content: center;
   align-items: center;
   justify-items: center;
+  margin: 30px;
 }
 
 #user-profile-image-container {
@@ -285,6 +341,7 @@ li {
   overflow: hidden;
   place-items: center;
   justify-content: center;
+  margin: 20px;
 }
 
 #profile-icon {
@@ -297,12 +354,56 @@ li {
   object-fit: cover;
 }
 
-.user-selector {
+.user-selector-container {
   display: grid;
   justify-content: center;
   align-items: center;
   text-align: center;
+  width: 500px;
 }
+
+.user-selector{
+  width: 150px;
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 0 2px rgb(204, 204, 204);
+  transition: all .5s ease;
+  position: relative;
+  font-size: 14px;
+  color: #474747;
+  height: 100%;
+  text-align: left;
+  padding: 10px;
+}
+
+.user-selector:hover {
+  cursor:pointer;
+  display: block;
+  padding: 10px
+}
+
+.loading-new-comments {
+  color: #f8f5f2;
+  font-size:medium;
+  margin: 0;
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  padding: 5px;
+  display: flex;
+  flex-direction:column;
+  background-color:#c7240e;
+  border: 3px solid #f8f5f2;
+  border-radius: 20px;
+  width: 80%;
+  height: 30px;
+  justify-self: center;
+  text-align: center;
+  justify-content: center;
+}
+
 
 @media only screen and (max-width: 600px) {
   h1 {
@@ -336,11 +437,6 @@ li {
   .article-title {
     color: #232323;
     font-size: medium;
-  }
-  
-  .article-info {
-    color: #078080;
-    font-size: small;
   }
 
 }

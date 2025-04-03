@@ -3,17 +3,37 @@ import { getArticle, getComments } from "../api";
 import useApiRequest from "../custom-hooks/useApiRequest";
 import Comment from "./Comment";
 import Votes from "./Votes";
+import AddComment from "./AddComment";
+import { useEffect, useState } from "react";
 
 function Article() {
+
+    const [newComments, setNewComments] = useState(false)
+    const [isLoadingNewComments, setIsLoadingNewComments] = useState(false);
+
 
     const {article_id} = useParams();
 
     const {data: article, isLoading, isError} = useApiRequest(getArticle, article_id)
 
-    const {data: apiComments} = useApiRequest(getComments, article_id)
+    const {data: apiComments, isLoading: commentsLoading, isError: commentsError } = useApiRequest(getComments, article_id, newComments)
     const comments = apiComments || [];
 
-    if(isLoading) {
+
+    useEffect(() => {
+        if (newComments) {
+            setIsLoadingNewComments(true);
+        }
+    }, [newComments]);
+
+    useEffect(() => {
+        if (!commentsLoading) {
+            setIsLoadingNewComments(false);
+            setNewComments(false);
+        }
+    }, [commentsLoading]); 
+
+    if (isLoading) {
         return (<p>Loading...</p>)
     }
 
@@ -33,6 +53,12 @@ function Article() {
                 <p className="text-body">{article.body}</p>
                 <Votes article={article}/>
                 <div className="text-footer">
+                <AddComment article_id={article_id} setNewComments={setNewComments}/>
+                {isLoadingNewComments && (
+                            <div className="loading-new-comments">
+                                <p>Loading new comment...</p>
+                            </div>
+                        )}
                 <div className="comments-box">
                         {comments.length === 0 ? (
                             <div className="no-comments-card">
