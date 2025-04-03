@@ -43,7 +43,7 @@ function Article() {
 
     return (
         <div className="article-box-container">
-            <div className="article-box">
+            <div className="article-page-box">
                 <div id="text-header">
                     <h3 id="article-title">{article.title}</h3>
                     <p className="text-author"><Link to={`/users/${article.author}`}>Author: {article.author}</Link></p>

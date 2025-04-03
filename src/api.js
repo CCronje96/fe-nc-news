@@ -10,9 +10,15 @@ export const getUsers = () => {
   });
 };
 
-export const getArticles = (query) => {
+export const getArticles = (topic, sort_by, order) => {
   return api
-    .get("/articles", { params: { topic: query } })
+    .get("/articles", {
+      params: {
+        topic: topic || "",
+        sort_by: sort_by,
+        order: order,
+      },
+    })
     .then(({ data: { articles } }) => {
       return articles;
     });
