@@ -4,15 +4,15 @@ const api = axios.create({
   baseURL: "https://back-end-nc-news-pi4w.onrender.com/api",
 });
 
-export const getArticles = () => {
-  return api.get("/articles").then(({ data: { articles } }) => {
-    return articles;
-  });
-};
-
 export const getUsers = () => {
   return api.get("/users").then(({ data: { users } }) => {
     return users;
+  });
+};
+
+export const getArticles = () => {
+  return api.get("/articles").then(({ data: { articles } }) => {
+    return articles;
   });
 };
 
@@ -35,5 +35,16 @@ export const getComments = (article_id) => {
     .get(`/articles/${article_id}/comments`)
     .then(({ data: { comments } }) => {
       return comments;
+    });
+};
+
+export const postComment = (article_id, commentInput, loggedInUser) => {
+  return api
+    .post(`/articles/${article_id}/comments`, {
+      body: commentInput,
+      username: loggedInUser,
+    })
+    .then(({ data: { insertedComment } }) => {
+      return insertedComment;
     });
 };
