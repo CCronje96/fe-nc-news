@@ -1,32 +1,78 @@
 import { getArticles } from "../api";
 import ArticleCard from "./ArticleCard";
 import useApiRequest from "../custom-hooks/useApiRequest";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 function ArticleList() {
-
     const [searchParams, setSearchParams] = useSearchParams();
+    const navigate = useNavigate();
 
-    const query = searchParams.get('topic')
+    const topic = searchParams.get('topic');
+    const sort_by = searchParams.get('sort_by');
+    const order = searchParams.get('order');
 
-    const {data: articles, isLoading, isError} = useApiRequest(getArticles, query)
+    const { data: articles, isLoading, isError } = useApiRequest(getArticles, topic, sort_by, order);
 
-    if(isLoading) {
-        return (<p>Loading...</p>)
+    function handleSort(event) {
+        const newSearchParams = new URLSearchParams(searchParams);
+        newSearchParams.set('sort_by', event.target.value);
+
+        if (!window.location.pathname.startsWith('/articles')) {
+            navigate({
+                pathname: '/articles',
+                search: newSearchParams.toString()
+            });
+        } else {
+            setSearchParams(newSearchParams);
+        }
+    }
+
+    function handleOrder(event) {
+        const newSearchParams = new URLSearchParams(searchParams);
+        newSearchParams.set('order', event.target.value);
+
+        if (!window.location.pathname.startsWith('/articles')) {
+            navigate({
+                pathname: '/articles',
+                search: newSearchParams.toString()
+            });
+        } else {
+            setSearchParams(newSearchParams);
+        }
+    }
+
+    if (isLoading) {
+        return <p>Loading...</p>;
     }
 
     if (isError) {
-        return(<p>Oops! Something went wrong.</p>)
+        return <p>Oops! Something went wrong.</p>;
     }
 
     return (
         <div className="article-box-container">
-        {articles.map((article) => {
-            return (
-                <div key={article.article_id}><ArticleCard article={article} /></div>
-            )
-        })}</div>
-    )
-}
+            <select className="selector" 
+                value={sort_by || ""}
+                onChange={handleSort}>
+                <option value="" disabled>Sort by...</option>
+                <option value="created_at">Date</option>
+                <option value="comment_count">Comment Count</option>
+                <option value="votes">Votes</option>
+            </select>
+            <select 
+                className="selector" 
+                value={order || ""}
+                onChange={handleOrder}
+            >
+                <option value="" disabled>Order by...</option>
+                <option value="desc">Descending</option>
+                <option value="asc">Ascending</option>
+            </select>
 
+            {articles.map((article) => (
+                <div key={article.article_id}><ArticleCard article={article} /></div>
+            ))}
+        </div>
+    );
+}
 export default ArticleList;

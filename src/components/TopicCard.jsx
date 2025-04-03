@@ -9,7 +9,7 @@ function TopicCard({topic}) {
                         <p className="topic-card-description">{topic.description}</p>
                     </div>
                     <div className="topic-img-container">
-                        <img src={topic.img_url || "public/24075671_sl_070720_32260_31.jpg" } alt="topic related subject" /> 
+                        <img src={topic.img_url || "24075671_sl_070720_32260_31.jpg" } alt="topic related subject" /> 
                     </div>
                  </Link>
             </div>
