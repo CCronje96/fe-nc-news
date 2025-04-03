@@ -1,10 +1,15 @@
 import { getArticles } from "../api";
 import ArticleCard from "./ArticleCard";
 import useApiRequest from "../custom-hooks/useApiRequest";
+import { useSearchParams } from "react-router-dom";
 
 function ArticleList() {
 
-    const {data: articles, isLoading, isError} = useApiRequest(getArticles)
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const query = searchParams.get('topic')
+
+    const {data: articles, isLoading, isError} = useApiRequest(getArticles, query)
 
     if(isLoading) {
         return (<p>Loading...</p>)

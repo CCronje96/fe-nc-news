@@ -10,10 +10,12 @@ export const getUsers = () => {
   });
 };
 
-export const getArticles = () => {
-  return api.get("/articles").then(({ data: { articles } }) => {
-    return articles;
-  });
+export const getArticles = (query) => {
+  return api
+    .get("/articles", { params: { topic: query } })
+    .then(({ data: { articles } }) => {
+      return articles;
+    });
 };
 
 export const getArticle = (article_id) => {
@@ -28,6 +30,12 @@ export const patchArticle = (article_id, voteChange) => {
     .then(({ data: { article } }) => {
       return article;
     });
+};
+
+export const getTopics = () => {
+  return api.get("/topics").then(({ data: { topics } }) => {
+    return topics;
+  });
 };
 
 export const getComments = (article_id) => {
