@@ -300,6 +300,7 @@ li {
   font-family: inherit;
   font-size: inherit;
   color: #303030;
+  resize: vertical;
 }
 
 .comment-input.error  {
@@ -311,6 +312,7 @@ li {
   font-size: inherit;
   color: red;
   border-color: red;
+  resize: vertical;
 }
 
 
@@ -510,6 +512,25 @@ li {
   justify-self: center;
   text-align: center;
   justify-content: center;
+}
+
+.error-container {
+  display: flex;
+  align-self: center;
+  width: 80%;
+  border: 1px solid;
+  margin: 10px 0px;
+  padding: 5px 10px 5px 50px;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  color: #D8000C;
+  background-color: #FFBABA;
+  background-image: url('https://i.imgur.com/GnyDvKN.png');
+}
+
+.error-message {
+  margin-block: 10px;
+  margin-inline: 2px;
 }
 
 

@@ -20,10 +20,15 @@ function Comment({comment, setNewComments}) {
                 setNewComments(true);
             })
             .catch((err) => {
-                setError(true);
+                setError(err);
             })
         }
     }
+
+    if (error) {
+        return <ErrorComponent component={"Comment"} error={error} />;
+    }
+
 
     return(
         <div className="comment-wrapper" >

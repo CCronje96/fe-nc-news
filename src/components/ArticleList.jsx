@@ -2,14 +2,29 @@ import { getArticles } from "../api";
 import ArticleCard from "./ArticleCard";
 import useApiRequest from "../custom-hooks/useApiRequest";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import ErrorComponent from "./ErrorComponent";
+import { useEffect, useState } from "react";
 
 function ArticleList() {
     const [searchParams, setSearchParams] = useSearchParams();
     const navigate = useNavigate();
+    const [paramsError, setParamsError] = useState(null)
 
-    const topic = searchParams.get('topic');
-    const sort_by = searchParams.get('sort_by');
-    const order = searchParams.get('order');
+    const {topic, sort_by, order} = Object.fromEntries(searchParams.entries());
+
+    useEffect(() => {
+        const paramsObject = Object.fromEntries(searchParams.entries());
+        const validParams = ['topic', 'sort_by', 'order'];
+        const invalidParams = Object.keys(paramsObject).filter(
+            key => !validParams.includes(key)
+        );
+
+        if (invalidParams.length > 0) {
+            setParamsError(`Invalid Query Parameters: ${invalidParams.join(', ')}`);
+        } else {
+            setParamsError(null);
+        }
+    }, [searchParams]);
 
     const { data: articles, isLoading, isError } = useApiRequest(getArticles, topic, sort_by, order);
 
@@ -46,8 +61,12 @@ function ArticleList() {
     }
 
     if (isError) {
-        return <p>Oops! Something went wrong.</p>;
+        return <ErrorComponent component={"Articles"} error={isError} />;
     }
+    if (paramsError) {
+        return <ErrorComponent component={"Articles"} error={paramsError} />;
+    }
+
 
     return (
         <div className="article-box-container">

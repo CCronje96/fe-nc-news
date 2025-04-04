@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 
 const useApiRequest = (apiFunction, ...args) => {
+
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
@@ -14,7 +15,7 @@ const useApiRequest = (apiFunction, ...args) => {
             })
             .catch((err) => {
                 console.log(err)
-                setIsError(true);
+                setIsError(err);
             })
             .finally(() => {
                 setIsLoading(false);

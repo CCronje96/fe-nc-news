@@ -1,6 +1,7 @@
 import './App.css'
 import Article from './components/Article'
 import ArticleList from './components/ArticleList'
+import ErrorComponent from './components/ErrorComponent'
 import Header from './components/Header'
 import Nav from './components/Nav'
 import TopicsList from './components/TopicsList'
@@ -21,6 +22,7 @@ function App() {
         <Route path="/articles" element={<ArticleList />} />
         <Route path="/articles/:article_id" element={<Article />} />
         <Route path="/topics" element={<TopicsList />} />
+        <Route path="/*" element={<ErrorComponent />} />
       </Routes> 
     </UserProvider>
     </>

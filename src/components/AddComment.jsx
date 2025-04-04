@@ -25,7 +25,7 @@ function AddComment({article_id, setNewComments}) {
     function handleSubmit(event) {
         event.preventDefault();
 
-        if (commentInput === "" || commentInput === "Type here...") {
+        if (commentInput === "" || commentInput === "Type here..." || commentInput === "Please enter a comment...") {
             setCommentInput("Please enter a comment...")
             setError(true);
             return;
