@@ -72,22 +72,20 @@ function ArticleList() {
         <div className="article-box-container">
             <div className="all-selectors-container">
             <div className="selector-container">
-            <p>Sort By:</p>
             <select className="selector" 
-                value={sort_by || ""}
-                onChange={handleSort}>
+                onChange={handleSort} defaultValue="">
+                <option value="" disabled>Sort By...</option>
                 <option value="created_at">Date</option>
                 <option value="comment_count">Comment Count</option>
                 <option value="votes">Votes</option>
             </select>
             </div>
             <div className="selector-container">
-            <p>Order By:</p>
             <select 
                 className="selector" 
-                value={order || ""}
                 onChange={handleOrder}
-            >
+                defaultValue="">
+                <option value="" disabled>Order...</option>
                 <option value="desc">Descending</option>
                 <option value="asc">Ascending</option>
             </select>

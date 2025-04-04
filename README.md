@@ -1,12 +1,84 @@
-# React + Vite
+# NC News
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Deployed Version
 
-Currently, two official plugins are available:
+You can view the deployed version of the app [here](link-to-deployed-version).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Project Overview
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**NC News** is a simulated social news aggregation platform where users can view and interact with articles. The app allows users to view all articles on the home page, view individual articles, comment on articles, vote on articles, and manage their comments. Articles are categorised and can be filtered by topics, and users can sort them based on various parameters such as date, comment count, and votes.
+
+### Features:
+
+- **View a List of Articles**: Display a list of articles on the main page.
+- **View an Individual Article**: Navigate to a page displaying a single article.
+- **View Comments**: See comments associated with an article on the article page.
+- **Vote on Articles**: Upvote or downvote articles.
+- **Post a Comment**: Add comments to articles.
+- **Delete Comments**: Users can delete their own comments.
+- **Sort Articles**: Sort articles by date, comment count, or votes in ascending or descending order.
+- **Topic-Based Views**: View articles filtered by different topics.
+
+---
+
+## Technologies Used
+
+- **React**: Used for building the user interface and handling state management.
+- **React Router**: Used for handling routing between different views.
+- **Axios**: Used for making API requests to the backend.
+- **CSS**: Used for styling the app.
+- **Netlify**: For deploying the app to the web.
+
+---
+
+## Backend Repository
+
+This frontend app interacts with a backend API to fetch and manipulate data. You can find the backend repository [here](https://github.com/CCronje96/back-end-nc-news).
+
+---
+
+## Requirements
+
+To run this project locally, ensure that you have the following installed:
+
+- **Node.js** (Minimum version: 23.5.0)
+
+---
+
+## Running the Project Locally
+
+### 1. Clone the Repository
+
+Clone this repository to your local machine:
+
+```
+git clone <repo-url>
+```
+
+### 2. Install Dependencies
+
+Navigate into the project folder and install the necessary dependencies:
+
+```
+cd northcoders-news
+npm install
+```
+
+### 3. Run the Development Server
+
+Start the development server to run the app locally:
+
+```bash
+npm run dev
+```
+
+This will start the app at a local development server URL, e.g. http://localhost:3000.  
+You can now open this URL in your browser to see the app in action
+
+### 4. Additional Notes
+
+The database is hosted on Supabase and the api on Render, however it might take a while to "spin up" after inactivity. If you're running and hosting the backend and frontend locally, make sure they're configured to interact properly in order for data to be fetched successfully.
+
+---
