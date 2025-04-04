@@ -5,6 +5,7 @@ import Comment from "./Comment";
 import Votes from "./Votes";
 import AddComment from "./AddComment";
 import { useEffect, useState } from "react";
+import ErrorComponent from "./ErrorComponent";
 
 function Article() {
 
@@ -36,9 +37,19 @@ function Article() {
     if (isLoading) {
         return (<p>Loading...</p>)
     }
+    if (commentsLoading) {
+        return (<p>Loading...</p>)
+    }
 
     if (isError) {
-        return(<p>Oops! Something went wrong.</p>)
+        return(
+            <ErrorComponent component={"Article"} error={isError} />
+        )
+    }
+    if (commentsError) {
+        return(
+            <ErrorComponent component={"Article"} error={commentsError} />
+        )
     }
 
     return (
