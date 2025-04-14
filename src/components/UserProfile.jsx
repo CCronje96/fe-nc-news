@@ -2,6 +2,7 @@ import { useContext } from "react"
 import { UserContext } from "../contexts/User";
 import { getUsers } from "../api";
 import useApiRequest from "../custom-hooks/useApiRequest";
+import LoadingAnimation from "./Loading";
 
 function UserProfile() {
 
@@ -9,7 +10,7 @@ function UserProfile() {
     const {loggedInUser, setLoggedInUser} = useContext(UserContext);
 
     if(isLoading) {
-        return (<p>Loading...</p>)
+        return <LoadingAnimation />
     }
 
     if (isError) {
@@ -26,7 +27,7 @@ function UserProfile() {
              <div id="user-profile-image-container">
                 <img id="profile-icon" src={loggedInUser.avatar_url || "pngwing.com.png"} alt="smiling yellow face illustration" /> 
                 </div>  
-            <div className="selector-container">
+            <div className="user-selector-container">
                 <p>Switch User:</p>
                 <select onChange={handleChange} className="selector" defaultValue="">
                 <option value="" disabled>Select user...</option>

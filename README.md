@@ -25,11 +25,10 @@ You can view the deployed version of the app [here](https://nc-news-cc.netlify.a
 
 ## Technologies Used
 
-- **React**: Used for building the user interface and handling state management.
-- **React Router**: Used for handling routing between different views.
-- **Axios**: Used for making API requests to the backend.
-- **CSS**: Used for styling the app.
-- **Netlify**: For deploying the app to the web.
+- **JavaScript XML, CSS**
+- **React, React Router**
+- **Axios**
+- **Netlify**
 
 ---
 

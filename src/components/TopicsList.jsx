@@ -1,5 +1,6 @@
 import { getTopics } from "../api";
 import useApiRequest from "../custom-hooks/useApiRequest";
+import LoadingAnimation from "./Loading";
 import TopicCard from "./TopicCard";
 
 function TopicsList() {
@@ -7,7 +8,7 @@ function TopicsList() {
 
 
     if(isLoading) {
-        return (<p>Loading...</p>)
+        return <LoadingAnimation />
     }
 
     if (isError) {

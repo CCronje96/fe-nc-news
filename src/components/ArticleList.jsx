@@ -4,6 +4,7 @@ import useApiRequest from "../custom-hooks/useApiRequest";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import ErrorComponent from "./ErrorComponent";
 import { useEffect, useState } from "react";
+import LoadingAnimation from "./Loading";
 
 function ArticleList() {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -57,8 +58,8 @@ function ArticleList() {
     }
 
     if (isLoading) {
-        return <p>Loading...</p>;
-    }
+            return <LoadingAnimation />
+        }
 
     if (isError) {
         return <ErrorComponent component={"Articles"} error={isError} />;

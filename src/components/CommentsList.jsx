@@ -25,7 +25,7 @@ function CommentsList({ article_id, newComments, setNewComments, comments, comme
     }
 
     if (commentsLoading) {
-        return <p>Loading comments...</p>;
+        return <LoadingAnimation />
     }
 
     return (

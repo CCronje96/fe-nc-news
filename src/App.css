@@ -489,13 +489,25 @@ li {
   justify-content: end;
   align-items: center;
   text-align: center;
-  width: 15vw;
+  width: 10vw;
   height: 60px;
   font-size: 1em;
 }
 
+.user-selector-container {
+  display: flex;
+  flex-direction: column;  
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 10vw;
+  height: 60px;
+  font-size: 1em;
+}
+
+
 .selector {
-  width: 60%;
+  width: 80%;
   height: 50%;
   display: inline-block;
   background-color: #fff;
@@ -580,6 +592,14 @@ li {
 
   .selector-container {
     width: 60%;
+    max-width: 120px;
+    height: 50%;
+    font-size: 0.8em;
+  }
+
+  .user-selector-container {
+    width: 60%;
+    max-width: 150px;
     height: 50%;
     font-size: 0.8em;
   }
@@ -640,8 +660,15 @@ li {
 
   .selector-container {
     width: 60%;
+    max-width: 120px;
     height: 50%;
     font-size: 0.8em;
   }
 
+  .user-selector-container {
+    width: 60%;
+    max-width: 150px;
+    height: 50%;
+    font-size: 0.8em;
+  }
 }

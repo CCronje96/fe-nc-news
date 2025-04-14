@@ -6,6 +6,7 @@ import Votes from "./Votes";
 import AddComment from "./AddComment";
 import { useEffect, useState } from "react";
 import ErrorComponent from "./ErrorComponent";
+import LoadingAnimation from "./Loading";
 
 function Article() {
 
@@ -35,10 +36,10 @@ function Article() {
     }, [commentsLoading]); 
 
     if (isLoading) {
-        return (<p>Loading...</p>)
+        return <LoadingAnimation />
     }
     if (commentsLoading) {
-        return (<p>Loading...</p>)
+        return <LoadingAnimation />
     }
 
     if (isError) {
