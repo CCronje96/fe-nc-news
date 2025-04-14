@@ -1,14 +1,10 @@
 # NC News
 
-## Deployed Version
-
-You can view the deployed version of the app [here](https://nc-news-cc.netlify.app/).
-
----
-
 ## Project Overview
 
-**NC News** is a simulated social news aggregation platform where users can view and interact with articles. The frontend development of this app allows users to view all articles on the home page, view individual articles, comment on articles, vote on articles, and manage their comments. Articles are categorised and can be filtered by topics, and users can sort them based on various parameters such as date, comment count, and votes.
+**NC News** is a simulated social news aggregation platform where users can view and interact with articles.
+
+You can view the **deployed version** of the app [here](https://nc-news-cc.netlify.app/).
 
 ### Features:
 
@@ -78,6 +74,8 @@ You can now open this URL in your browser to see the app in action
 
 ### 4. Additional Notes
 
-The database is hosted on Supabase and the api on Render, however it might take a while to "spin up" after inactivity. If you're running and hosting the backend and frontend locally, make sure they're both configured to interact properly in order for data to be fetched successfully.
+The database is hosted on Supabase and the api on Render, however it might take a while to "spin up" after inactivity. If you're running and hosting the backend and frontend locally, ensure they're both configured to interact properly in order for data to be fetched successfully.
+
+**This portfolio project was created as part of a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com/)**
 
 ---
