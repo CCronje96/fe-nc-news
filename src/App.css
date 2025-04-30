@@ -19,6 +19,13 @@ a.article-card-author:hover{
 #root {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+}
+
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 body {
@@ -215,9 +222,9 @@ header {
   justify-items: center;
   background-color: #c7240e;
   padding-block: 3px;
-  position: fixed;
-  left: 0;
-  bottom: 0;
+  position: relative; 
+  width: 100%;
+  margin-top: 20px;
 }
 
 ul {
@@ -337,7 +344,7 @@ li {
 }
 
 .vote:not(.vote-selected) > .vote-button:hover {
-  color:#636363;
+  color:#525151;
 }
 
 

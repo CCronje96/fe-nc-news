@@ -17,6 +17,7 @@ function App() {
     <UserProvider >
       <Header />
       <Nav />
+      <div className="main-content"> {/* Ensure this wrapper for main content */}
       <Routes >
         <Route path="/user-profile" element={<UserProfile />}/>
         <Route path="/" element={<ArticleList />} />
@@ -25,6 +26,7 @@ function App() {
         <Route path="/topics" element={<TopicsList />} />
         <Route path="/*" element={<ErrorComponent />} />
       </Routes>
+      </div>
       <Footer /> 
     </UserProvider>
     </>
