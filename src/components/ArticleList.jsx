@@ -92,9 +92,11 @@ function ArticleList() {
             </select>
             </div>
             </div>
+            <div className="article-card-container">
             {articles.map((article) => (
                 <div key={article.article_id}><ArticleCard article={article} /></div>
             ))}
+            </div>
         </div>
     );
 }

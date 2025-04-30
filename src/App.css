@@ -4,10 +4,17 @@ a:-webkit-any-link{
 }
 a:hover{
   text-decoration: underline;
+  cursor: pointer;
 }
 a.wrapping-link:hover{
   text-decoration: none;
 }
+
+a.article-card-author:hover{
+  text-decoration: none;
+  color: #075252;
+}
+
 
 #root {
   display: flex;
@@ -28,6 +35,94 @@ body {
   box-sizing: border-box;
 }
 
+
+.article-card-container {
+  margin: 2rem;
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(2rem, 25rem));
+  grid-gap: 2rem; 
+  justify-content: center;
+  justify-items: center;
+  width: 100%;
+}
+
+.article-card {
+  background-color: #f8f5f2;
+  overflow: hidden;
+  box-shadow: 0px 2px 20px #d1d1d1;
+  border-radius: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 200ms ease-in;
+  min-height: fit-content;
+  width: 25rem;
+}
+
+.article-card:hover {
+  transform: scale(1.02);
+}
+
+.article-card-image {
+  height: 12rem;
+  width: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.article-card-title {
+  padding: 0.5rem;
+  font-size: large;
+  margin: 0;
+  color: #232323;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2em;
+  height: 2em;
+}
+
+
+.article-card-description {
+  display: grid;
+  grid-template-areas:
+    "author posted"
+    "bottom-right bottom-right";
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  justify-content: space-between;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.article-card-author,
+.article-card-posted,
+.article-card-votes,
+.article-card-comments {
+  font-size: medium;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.article-card-posted {
+  justify-self:flex-end;
+  cursor: default;
+}
+
+.bottom-right {
+  grid-area: bottom-right;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  align-items: center;
+}
 
 h1 {
   font-family: "DM Serif Display", serif;
@@ -154,10 +249,12 @@ li {
   align-items: center;
   flex-direction: column;
   overflow: hidden;
+  transition: transform 200ms ease-in;
+  box-shadow: 0px 2px 20px #d1d1d1;
 }
 
 .topic-box:hover {
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  transform: scale(1.02);
 }
 
 .topic-box:active {
@@ -199,20 +296,8 @@ li {
   align-items: center;
   align-self: center;
   box-sizing: border-box;
-  width: 50vw;
+  width: 80vw;
   min-width: 400px;
-}
-
-.article-box {
-  background-color: #f8f5f2;
-  width: 50vw;
-  min-width: 400px;
-  border-radius: 5px;
-  margin: 10px;
-}
-
-.article-box:hover {
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 .article-page-box {
@@ -229,6 +314,16 @@ li {
   padding: 12px;
 }
 
+.info-wrapper {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.info-wrapper > .comment-button:hover {
+  color: #076d6d;
+}
+
 .vote {
   display: flex;
   align-items: center;
@@ -241,7 +336,7 @@ li {
 }
 
 .vote:not(.vote-selected) > .vote-button:hover {
-  color:#232323;
+  color:#636363;
 }
 
 
@@ -250,6 +345,17 @@ li {
   cursor: pointer;
   color:#636363;
 }
+
+.vote-selected > .vote-button:hover {
+  color: #075252;
+}
+
+.comment-button {
+  margin-right: 6px;
+  cursor: pointer;
+  color:#636363;
+}
+
 
 .comment-error {
   display: flex;
@@ -377,28 +483,6 @@ li {
   background-color: #971f0f;
 }
 
-.article-card-title {
-  color: #232323;
-  font-size:large;
-  padding: 5px;
-  margin: 0;
-}
-
-.article-card-info {
-  color: #232323;
-  font-size:medium;
-  padding: 5px;
-  margin: 0;
-}
-
-.article-card-author {
-  color: #076d6d;
-  font-size:medium;
-  padding: 5px;
-  margin: 0;
-  width: 150px;
-}
-
 #article-header {
   display: flex; 
   flex-direction: column;
@@ -482,6 +566,7 @@ li {
   justify-content: end;
   width: 50vw;
   min-width: 400px;
+  padding-top: 1.2rem;
 }
 
 .selector-container {
@@ -569,23 +654,42 @@ li {
 
 @media only screen and (max-width: 1460px) {
 
-  .article-box {
-    background-color: #f8f5f2;
+  .article-box-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    box-sizing: border-box;
     max-width:80vw;
     min-width: 400px;
-    border-radius: 5px;
-    text-wrap: wrap;
-    margin: 10px;
-  } 
-
-  .article-box-container {
-    max-width:min-content;
-    min-width: 400px;
   }
+
+  .article-card-container {
+    margin: 2rem;
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(2rem, 30rem));
+    grid-gap: 4rem; 
+    justify-content: center;
+    justify-items: center;
+    width: 100%;
+  }
+  
+  .article-card {
+    overflow: hidden;
+    box-shadow: 0px 2px 20px #d1d1d1;
+    border-radius: 0.2rem;
+    display: flex;
+    flex-direction: column;
+    transition: transform 200ms ease-in;
+    min-height: fit-content;
+    width: 30rem;
+  }
+
   
   .all-selectors-container {
     flex-direction: row;
-    align-self: end;
+    justify-content: center;
     max-width:min-content;
     min-width: 400px;
   }
@@ -621,20 +725,22 @@ li {
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-content: center;
     box-sizing: border-box;
-    max-width: 100%;
+    max-width: 80vw;
     min-width: 80vw;
   }
-  
-  .article-box {
-    background-color: #f8f5f2;
-    max-width:min-content;
-    min-width: 75vw;
-    border-radius: 5px;
-    text-wrap: wrap;
-    margin: 10px;
-  } 
+
+  .article-card {
+    overflow: hidden;
+    box-shadow: 0px 2px 20px #d1d1d1;
+    border-radius: 0.2rem;
+    display: flex;
+    flex-direction: column;
+    transition: transform 200ms ease-in;
+    min-height: fit-content;
+    width: 20rem;
+  }
 
   .article-page-box {
     background-color: #f8f5f2;
@@ -653,7 +759,7 @@ li {
   .all-selectors-container {
     display: flex;
     flex-direction: row;
-    align-self: center;
+    justify-content: center;
     max-width: 100%;
     min-width: 80vw;
   }
