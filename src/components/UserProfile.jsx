@@ -10,7 +10,12 @@ function UserProfile() {
     const {loggedInUser, setLoggedInUser} = useContext(UserContext);
 
     if(isLoading) {
-        return <LoadingAnimation />
+        return (
+              <div className="loading-container">
+                <h3>Loading Profile</h3>
+                <LoadingAnimation />
+              </div>
+            );
     }
 
     if (isError) {

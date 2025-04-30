@@ -58,7 +58,12 @@ function ArticleList() {
     }
 
     if (isLoading) {
-            return <LoadingAnimation />
+            return (
+                <div className="loading-container">
+                    <h3>Loading Articles</h3>
+                    <LoadingAnimation />
+                </div>
+            )
         }
 
     if (isError) {
