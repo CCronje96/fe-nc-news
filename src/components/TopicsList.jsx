@@ -21,12 +21,14 @@ function TopicsList() {
     }
 
     return (
-        <div className="topic-box-container">
-        {topics.map((topic) => {
-            return (
-                <div key={topic.slug}><TopicCard topic={topic} /></div>
-            )
-        })}</div>
+        <div className="article-box-container">
+            <div className="article-card-container">
+            {topics.map((topic) => {
+                return (
+                    <div key={topic.slug} ><TopicCard topic={topic} /></div>
+                )
+            })}</div>
+        </div>
     )
 }
 
