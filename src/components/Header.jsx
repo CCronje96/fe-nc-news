@@ -17,7 +17,7 @@ function Header() {
                     </div>
                 </Link>
             </div>
-            <h3 id="welcome-message">Welcome, {loggedInUser.username}!</h3>
+            <h2 id="welcome-message" style={{fontWeight: 400}}>Welcome, {loggedInUser.username}!</h2>
         </header>
     )
 }
