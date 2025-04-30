@@ -1,54 +1,46 @@
-import { useEffect, useState } from "react";
 import Comment from "./Comment";
-import AddComment from "./AddComment";
 import ErrorComponent from "./ErrorComponent";
+import useApiRequest from "../custom-hooks/useApiRequest";
+import { getComments } from "../api";
+import LoadingAnimation from "./Loading";
 
-function CommentsList({ article_id, newComments, setNewComments, comments, commentsLoading, commentsError }) {
+function CommentsList({ article_id, commentsVersion, refreshComments }) {
+  const {
+    data: apiComments,
+    isLoading: commentsLoading,
+    isError: commentsError,
+  } = useApiRequest(getComments, article_id, commentsVersion);
 
-    const [isLoadingNewComments, setIsLoadingNewComments] = useState(false);
+  const comments = apiComments || [];
 
-    useEffect(() => {
-        if (newComments) {
-            setIsLoadingNewComments(true);
-        }
-    }, [newComments]);
+  if (commentsError) {
+    return <ErrorComponent component="Comments" error={commentsError} />;
+  }
 
-    useEffect(() => {
-        if (!commentsLoading) {
-            setIsLoadingNewComments(false);
-            setNewComments(false);
-        }
-    }, [commentsLoading]); 
-
-    if (commentsError) {
-        return <ErrorComponent component="Comments" error={commentsError} />;
-    }
-
-    if (commentsLoading) {
-        return <LoadingAnimation />
-    }
-
+  if (commentsLoading) {
     return (
-        <div className="comments-box">
-            {isLoadingNewComments && (
-                            <div className="loading-new-comments">
-                                <p>Loading new comment...</p>
-                            </div>
-                        )}
-            <AddComment article_id={article_id} setNewComments={setNewComments} />
-            {comments.length === 0 ? (
-                <div className="no-comments-card">
-                    <p>No comments yet.</p>
-                </div>
-            ) : (
-                comments.map((comment) => (
-                    <div className="comment-wrapper" key={comment.comment_id}>
-                        <Comment comment={comment} setNewComments={setNewComments} />
-                    </div>
-                ))
-            )}
-        </div>
+      <div className="loading-container">
+        <h3>Loading Comments</h3>
+        <LoadingAnimation className="small-loader" />
+      </div>
     );
+  }
+
+  return (
+    <div className="comments-box">
+      {comments.length === 0 ? (
+        <div className="no-comments-card">
+          <p>No comments yet.</p>
+        </div>
+      ) : (
+        comments.map((comment) => (
+          <div className="comment-wrapper" key={comment.comment_id}>
+            <Comment comment={comment} refreshComments={refreshComments} />
+          </div>
+        ))
+      )}
+    </div>
+  );
 }
 
 export default CommentsList;
