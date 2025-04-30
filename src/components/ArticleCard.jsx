@@ -5,7 +5,7 @@ function ArticleCard({article}) {
         <div className="article-card">
             <Link to={`/articles/${article.article_id}`}>
             <img src={article.article_img_url} alt="article-relevant subject" className="article-card-image"/>
-            <h3 className="article-card-title">{article.title}</h3>
+            <h2 className="article-card-title">{article.title}</h2>
             </Link>
             <div className="article-card-description">
             <p className="article-card-author"><Link to={`/users/${article.author}`} className="article-card-author">By: {article.author}</Link></p>
